@@ -1,11 +1,11 @@
 import React from 'react';
-
-const Button = ({ children, onClick, disabled }) => {
+import './ButtonStyles.css'
+const Button = ({ onClick }) => {
   return (
-      <button onClick={onClick} disabled={disabled}>
-            {children}
-      </button>
-    );
+    <div className="button-container">
+      <button  onClick={onClick}>Show Result</button>
+    </div>
+  );
 };
 
 export default Button;
