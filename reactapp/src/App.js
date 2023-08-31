@@ -1,9 +1,9 @@
 import React from "react";
-import questionsData from "./Data/questionData.js";
+import questionsData from "/Data/questionData.js";
 import Results from "./Data/Results";
 import Button from "./components/UI/Button/Button.js";
 import Card from "./components/UI/Card/Card.js";
-import Banner from ".components/UI/Banner.js";
+import Banner from "./components/UI/Banner/Banner.js";
 
 class App extends React.Component {
   constructor(props) {
