@@ -3,7 +3,7 @@ import questionsData from "./QuestionData.js";
 import Results from "./components/UI/Results.js";
 import Button from "./components/UI/Button/Button.js";
 import Card from "./components/UI/Card/Card.js";
-import Banner from "./components/UI/Banner/Banner.js";
+import Banner from "./Banner.js";
 
 class App extends React.Component {
   constructor(props) {
