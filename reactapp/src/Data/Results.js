@@ -1,4 +1,4 @@
-import Button from '../UI/Button/Button';
+import Button from '.components/UI/Button/Button';
 
 function Results({ onResetQuiz }) {
     return (
