@@ -1,66 +1,23 @@
-import React, { useState } from 'react';
-import Input from '../Input/Input';
-import Button from '../Button/Button';
-import './CardStyles.css'
-const Card = () => {
-  const [score, setScore] = useState(0);
-  const [selected, setSelected] = useState({});
+import React from 'react';
+import classes from './Card.module.css';
+import Button from './../Button/Button';
 
-  const questions = [
-    {
-      question: 'Who is the father of our nation?',
-      options: ['Mahatma Gandhi', 'Jawaharlal Nehru', 'Donald Trump', 'Barrack Obama'],
-      answer: 'Mahatma Gandhi',
-    },
-    {
-      question: 'What color is are the leaves?',
-      options: ['Blue' ,'Red' ,'Yellow', 'Green'],
-      answer: 'Green',
-    },
-    {
-      question: 'What color is the sky?',
-      options: ['Blue' ,'Red' ,'Yellow', 'Green'],
-      answer: 'Blue',
-    },
-    {
-      question: 'What color is the sky?',
-      options: ['Blue' ,'Red' ,'Yellow', 'Green'],
-      answer: 'Blue',
-    },
-    {
-      question: 'What color is the fire?',
-      options: ['Blue' ,'Red' ,'Yellow', 'Green'],
-      answer: 'Red',
-    },
-  ];
+const Card = (props) => {
 
-  const handleOptionChange = (question, option) => {
-    setSelected({
-      ...selected,
-      [question]: option,
-    });
-  };
-
-  const handleShowResult = () => {
-    let currentScore = 0;
-    questions.forEach((q) => {
-      if (selected[q.question] === q.answer) {
-        currentScore += 1;
-      }
-    });
-    setScore(currentScore);
-  };
-
-  return (
-    <div className="card-container">
-      <h1>Quiz App</h1>
-      {questions.map((q) => (
-        <Input key={q.question} question={q.question} options={q.options} selected={selected[q.question]} onChange={handleOptionChange} />
-      ))}
-      <Button onClick={handleShowResult} />
-      {<h2 className='showResult'>You answered {score} / 5 correctly</h2>}
-    </div>
-  );
+    return (
+        <div className={classes.Card}>
+            <h4>{props.question}</h4>
+            <div className={classes.Options}>
+                {props.options ? Object.values(props.options).map((option, index) => (
+                    <Button key={index} className={classes.Option} onClick={() => { props.onAnswerSelected(index); }}>
+                        <input type="radio" id={`option${index}`} name={`question${props.questionIndex}`} value={index} checked={props.selectedAnswer === index} onChange={() => props.onAnswerSelected(index)} disabled={props.disabled} />
+                        <label htmlFor={`option${index}`}>{option}</label>
+                    </Button>
+                ))
+                    : null}
+            </div>
+        </div>
+    );
 };
 
 export default Card;
